@@ -11,6 +11,7 @@ const DetailMinitable = require('client/components/detail_minitable/index');
 
 const deleteModal = require('client/components/modal_delete/index');
 const createModal = require('./pop/create/index');
+const createBatch = require('./pop/create_batch/index');
 const attachInstance = require('./pop/attach_instance/index');
 const createSnapshot = require('./pop/create_snapshot/index');
 const detachInstance = require('./pop/detach_instance/index');
@@ -198,6 +199,9 @@ class Model extends React.Component {
     switch (key) {
       case 'create':
         createModal();
+        break;
+      case 'create_batch':
+        createBatch();
         break;
       case 'update_bootable':
         updateBootable(rows[0]);

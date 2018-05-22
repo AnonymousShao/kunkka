@@ -10,6 +10,11 @@
     "type": "create",
     "icon": "create"
   }, {
+    "value": ["batch", "create","volume"],
+    "key": "create_batch",
+    "type": "create",
+    "icon": "create"
+  }, {
     "value": ["create", "snapshot"],
     "key": "create_snapshot",
     "type": "create",

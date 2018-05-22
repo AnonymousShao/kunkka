@@ -26,6 +26,7 @@ const Charge = require('./subs/charge/index');
 const Adapter = require('./subs/adapter/index');
 const KeyValueTable = require('./subs/key_value_table/index');
 const KeyValue = require('./subs/key_value/index');
+const batchCreateVolume = require('../../../client/applications/dashboard/modules/volume/pop/create_batch/batch_create_volume');
 
 class ModalBase extends React.Component {
 
@@ -80,7 +81,8 @@ class ModalBase extends React.Component {
         'charge': Charge,
         'adapter': Adapter,
         'key_value_table': KeyValueTable,
-        'key_value': KeyValue
+        'key_value': KeyValue,
+        'batch_create_volume': batchCreateVolume
       };
 
       let Sub = subComs[m.type];

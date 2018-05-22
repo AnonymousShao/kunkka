@@ -44,7 +44,11 @@
     "transfer_name": "Transfer Name",
     "update_bootable": "Update Bootable Status",
     "volumn_id": "云硬盘ID",
-    "volume_source": "Volume Source"
+    "volume_source": "Volume Source",
+    "batch": "Batch",
+    "batch_create_volume": "Batch Create Volume",
+    "source": "source",
+    "source_instance": "Source Instance"
   },
   "zh-CN": {
     "accept_transfer": "接收转让",
@@ -91,6 +95,10 @@
     "transfer_name": "转让名称",
     "update_bootable": "修改可引导盘状态",
     "volumn_id": "云硬盘ID",
-    "volume_source": "云硬盘来源"
+    "volume_source": "云硬盘来源",
+    "batch": "批量",
+    "batch_create_volume": "批量创建云硬盘",
+    "source": "来源",
+    "source_instance": "来源相关实例"
   }
 }

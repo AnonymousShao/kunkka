@@ -1,0 +1,64 @@
+{
+  "title": ["batch", "create", "volume"],
+  "fields": [{
+    "type": "batch_create_volume",
+    "field": "batch_create_volume",
+    "hide": false,
+    "config": {
+      "table": {
+        "checkbox": true,
+        "dataKey": "id",
+        "loading": false,
+        "column": [{
+          "title": ["name"],
+          "dataIndex": "name",
+          "key": "name",
+          "type": "captain",
+          "type_": "input",
+          "sort": true
+        }, {
+          "title": ["volume", "source", "type"],
+          "dataIndex": "source",
+          "key": "source_type",
+          "type_": "select",
+          "hide": false
+        },{
+          "title": ["source"],
+          "dataIndex": "source_instance",
+          "key": "source_instance",
+          "type_": "select",
+          "hide": false
+        },{
+          "title": ["type"],
+          "dataIndex": "volume_type",
+          "key": "volume_type",
+          "type_": "select",
+          "hide": false
+        },{
+          "title": ["size"],
+          "dataIndex": "size",
+          "type_": "input",
+          "key": "size"
+        }],
+        "data": []
+      },
+      "btns": [{
+        "value": ["add_"],
+        "key": "add",
+        "type": "create",
+        "icon": "create"
+      }, {
+        "value": ["delete"],
+        "key": "delete",
+        "type": "delete",
+        "icon": "delete",
+        "disabled": true
+      }]
+    }
+  }],
+  "btn": {
+    "value": "create",
+    "type": "create",
+    "disabled": true
+  }
+}

@@ -275,7 +275,6 @@ class Modal extends React.Component {
   checkboxListener(status, clickedRow, arr) {
     let path = this.props.params;
     let key = this.props.config.table.dataKey;
-
     if (arr.length <= 0) {
       router.pushState('/' + path[0] + '/' + path[1]);
     } else if (arr.length <= 1) {
@@ -298,7 +297,6 @@ class Modal extends React.Component {
     if (this.refs.detail && this.refs.detail.state.visible) {
       this.checkboxListener(status, clickedRow, rows);
     }
-
     if (!this.refs.detail || (!this.refs.detail.state.visible || (this.refs.detail.state.visible && rows.length > 1))) {
       if (this.refs.detail && this.refs.detail.state.visible) {
         this.onClickDetailTabs();
@@ -341,7 +339,7 @@ class Modal extends React.Component {
   render() {
     let _config = tabFilter(this.props.config),
       tabs = _config.tabs,
-      title = _config.tabs.filter((tab) => tab.default)[0].name,
+      title = _config.tabs && _config.tabs.filter((tab) => tab.default)[0].name,
       btns = _config.btns,
       search = _config.search,
       table = _config.table,

@@ -62,6 +62,18 @@ module.exports = {
       data: data
     });
   },
+  batchCreateVolume: function(_data) {
+    let reqs = [];
+    _data.forEach(i => {
+      let data = {};
+      data.volume = i;
+      reqs.push(fetch.post({
+        url: '/proxy/cinder/v2/' + HALO.user.projectId + '/volumes',
+        data
+      }));
+    });
+    return RSVP.all(reqs);
+  },
   createBackup: function(data) {
     return fetch.post({
       url: '/proxy/cinder/v2/' + HALO.user.projectId + '/backups',

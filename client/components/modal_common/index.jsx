@@ -45,7 +45,6 @@ function modal(props) {
   let _props = Object.assign({}, props, {
     onAfterClose: onAfterClose
   });
-
   return ReactDOM.render(<Base {..._props}/>, container);
 }
 
