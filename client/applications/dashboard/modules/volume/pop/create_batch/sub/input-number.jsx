@@ -84,14 +84,6 @@ class InputNumber extends React.Component {
       focusValue: value,
       error: error
     });
-    if (this.props.position && !error) {
-      this.props.onChange('table', this.props.type, {
-        value: value,
-        position: this.props.position
-      });
-    } else {
-      this.props.onChange(value, error);
-    }
   }
 
   checkValue(e) {
@@ -165,7 +157,6 @@ class InputNumber extends React.Component {
       this.props.onChange(value, false);
     }
   }
-
   onKeyDown(e) {
     switch (e.keyCode) {
       case 38:

@@ -48,7 +48,9 @@
     "batch": "Batch",
     "batch_create_volume": "Batch Create Volume",
     "source": "source",
-    "source_instance": "Source Instance"
+    "source_instance": "Source Instance",
+    "available": "available",
+    "tip_Volume_Capacity": "current using capacity is greater than the rest of capacity"
   },
   "zh-CN": {
     "accept_transfer": "接收转让",
@@ -99,6 +101,8 @@
     "batch": "批量",
     "batch_create_volume": "批量创建云硬盘",
     "source": "来源",
-    "source_instance": "来源相关实例"
+    "source_instance": "来源相关实例",
+    "available": "可用大小",
+    "tip_Volume_Capacity": "当前使用容量大于可用容量,无法进行批量创建"
   }
 }

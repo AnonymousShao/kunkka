@@ -95,9 +95,19 @@ class Model extends React.Component {
           i.sources = res[`names_${i.id}`];
         }
       });
+      return request.getOverview();
+    }).then(res => {
+      let gigabytes = res.overview_usage.gigabytes;
+      let available = gigabytes.total - gigabytes.used;
+      let config = JSON.parse(JSON.stringify(this.state.config));
+      config.btns.forEach(btn => {
+        btn.key === 'add' ? btn.disabled = false : null;
+      });
       this.setState({
+        config,
         volumeSource,
-        volumeTypes
+        volumeTypes,
+        available
       });
     });
   }
@@ -413,11 +423,12 @@ class Model extends React.Component {
   render() {
     return (
       <div style={{paddingLeft: '20px'}}>
-        <div style={{paddingBottom: '10px'}}>
+        <div style={{paddingBottom: '10px', position: 'relative'}}>
           <ButtonList
             ref="btnList"
             btns={this.state.config.btns}
             onAction={this.onAction.bind(this)} />
+          <span style={{position: 'absolute', right: 0, top: 0}}>{__.available} : {this.state.available} GB</span>
         </div>
         <div className="table-container" style={this.props.style}>
           {!this.state.table.loading && !this.state.table.data.length ?

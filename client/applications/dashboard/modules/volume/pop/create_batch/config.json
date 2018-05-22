@@ -46,7 +46,8 @@
         "value": ["add_"],
         "key": "add",
         "type": "create",
-        "icon": "create"
+        "icon": "create",
+        "disabled": true
       }, {
         "value": ["delete"],
         "key": "delete",

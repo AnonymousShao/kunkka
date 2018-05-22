@@ -4,10 +4,6 @@ let request = require('../../request');
 let __ = require('locale/client/dashboard.lang.json');
 let getErrorMessage = require('client/applications/dashboard/utils/error_message');
 
-const ENABLE_CHARGE = HALO.settings.enable_charge;
-const DEFAULT_PRICE = '0.0000';
-const UNITNUMBER = 1024 * 1024 * 1024;
-
 let copyObj = function(obj) {
   let newobj = obj.constructor === Array ? [] : {};
   if (typeof obj !== 'object') {
@@ -17,28 +13,6 @@ let copyObj = function(obj) {
   }
   return newobj;
 };
-
-function getCapacitySize(refs, state, type) {
-  let item = state.data.filter(_data => _data.id === state.value);
-  let size, minValue;
-
-  switch(type) {
-    case 'image':
-      size = item[0] && Math.ceil(item[0].size / UNITNUMBER);
-      break;
-    default:
-      size = item[0] && item[0].size;
-      break;
-  }
-
-  let value = minValue = size < 1 ? 1 : size;
-
-  refs.capacity_size.setState({
-    value: value,
-    inputValue: value,
-    min: minValue || 1
-  });
-}
 
 function pop(obj, parent, callback) {
   let copyConfig = copyObj(config);
@@ -61,11 +35,14 @@ function pop(obj, parent, callback) {
     onConfirm: function(refs, cb) {
       let reqData = [];
       let tableData = JSON.parse(JSON.stringify(refs.batch_create_volume.state.table.data));
+      let available = refs.batch_create_volume.state.available;
+      let useTotal = 0;
       tableData.forEach(item => {
         let data = {};
         data.name = item.name;
         data.volume_type = item.typesVal;
         data.size = item.size;
+        useTotal += item.size;
         if (obj) {
           data.snapshot_id = obj.id;
         }
@@ -82,6 +59,11 @@ function pop(obj, parent, callback) {
         }
         reqData.push(data);
       });
+      if (useTotal > available) {
+        cb(false, __.tip_Volume_Capacity);
+        console.log(useTotal);
+        return;
+      }
       request.batchCreateVolume(reqData).then((res) => {
         callback && callback(res);
         cb(true);
